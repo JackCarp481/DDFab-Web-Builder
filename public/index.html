@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DDFAB Dealer Website Templates</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .switcher-bar {
+      display: flex;
+      align-items: center;
+      height: 52px;
+      background: #0e0e0e;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 0 24px;
+      gap: 8px;
+      z-index: 9999;
+      position: relative;
+    }
+
+    .switcher-brand {
+      color: #B5451B;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-right: 24px;
+      white-space: nowrap;
+    }
+
+    .switcher-tabs {
+      display: flex;
+      gap: 4px;
+    }
+
+    .switcher-tab {
+      background: transparent;
+      border: 1px solid #2a2a2a;
+      color: #999;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 200ms ease;
+      white-space: nowrap;
+    }
+
+    .switcher-tab:hover {
+      color: #fff;
+      border-color: #444;
+      background: #1a1a1a;
+    }
+
+    .switcher-tab.active {
+      background: #B5451B;
+      border-color: #B5451B;
+      color: #fff;
+    }
+
+    .template-frame {
+      width: 100%;
+      height: calc(100vh - 52px);
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .switcher-bar {
+        padding: 0 12px;
+        gap: 6px;
+      }
+      .switcher-brand { display: none; }
+      .switcher-tab {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="switcher-bar">
+    <span class="switcher-brand">DDFAB Templates</span>
+    <div class="switcher-tabs">
+      <button class="switcher-tab active" data-src="template-a.html">Dark Industrial</button>
+      <button class="switcher-tab" data-src="template-b.html">Clean Industrial</button>
+      <button class="switcher-tab" data-src="template-c.html">Workshop Grit</button>
+    </div>
+  </div>
+  <iframe class="template-frame" src="template-a.html" title="Template Preview"></iframe>
+
+  <script>
+    const tabs = document.querySelectorAll('.switcher-tab');
+    const frame = document.querySelector('.template-frame');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        frame.src = tab.dataset.src;
+      });
+    });
+  </script>
+</body>
+</html>
